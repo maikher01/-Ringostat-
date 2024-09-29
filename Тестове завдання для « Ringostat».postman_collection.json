@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "276d0ef8-e658-4906-9ddc-f448f18e1183",
+		"name": "Тестове завдання для « Ringostat»",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21455647"
+	},
+	"item": [
+		{
+			"name": "1.1 Експорт статистики з Журнала дзвінків.",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Auth-key",
+						"value": "6Yfe8OtGzUhFkjrE4zS2TMxR0ITFHQod",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.ringostat.net/calls/list?export_type=json&from=2023-11-01 00:00:00&to=2024-09-28 23:59:59&fields=calldate,caller,dst,disposition,billsec,utm_source,utm_medium,recording&order=desc&merge=0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ringostat",
+						"net"
+					],
+					"path": [
+						"calls",
+						"list"
+					],
+					"query": [
+						{
+							"key": "export_type",
+							"value": "json"
+						},
+						{
+							"key": "from",
+							"value": "2023-11-01 00:00:00"
+						},
+						{
+							"key": "to",
+							"value": "2024-09-28 23:59:59"
+						},
+						{
+							"key": "fields",
+							"value": "calldate,caller,dst,disposition,billsec,utm_source,utm_medium,recording"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						},
+						{
+							"key": "merge",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API-запит з'єднання 2-х номерів (простий метод Callback).",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Auth-key",
+						"value": "6Yfe8OtGzUhFkjrE4zS2TMxR0ITFHQod",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "extension",
+							"value": "044290344",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "+380442903444",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.ringostat.net/callback/outward_call",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ringostat",
+						"net"
+					],
+					"path": [
+						"callback",
+						"outward_call"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Перевірка доступності SIP-акаунта.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Auth-key",
+						"value": "6Yfe8OtGzUhFkjrE4zS2TMxR0ITFHQod",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://api.ringostat.net/sipstatus/online",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ringostat",
+						"net"
+					],
+					"path": [
+						"sipstatus",
+						"online"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
